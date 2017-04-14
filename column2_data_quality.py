@@ -30,7 +30,7 @@ def val_time(fr_dt,fr_tm,to_dt,to_tm):
   except: # if other columns are missing, I think it is ok 
    return "VALID" 
  except:  
-  if fr_dt =='':
+  if fr_tm =='':
    return 'NULL'
   else:
    return 'INVALID'

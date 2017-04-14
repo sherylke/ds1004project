@@ -24,7 +24,7 @@ def val_date(fr_dt,fr_tm,to_dt,to_tm):
    to_dttm = datetime.datetime.strptime(to_dt+"/"+to_tm,"%m/%d/%Y/%H:%M:%S")
    fr_dttm = datetime.datetime.strptime(fr_dt+"/"+fr_tm,"%m/%d/%Y/%H:%M:%S") 
    if fr_dttm > to_dttm:
-    return "INVALID1" # if from datetime is greater than to.. it is invalid 
+    return "INVALID" # if from datetime is greater than to.. it is invalid 
    else: 
     return "VALID"
   except: # if any 2 - 5 col is missing, the first col is still valid
@@ -33,7 +33,7 @@ def val_date(fr_dt,fr_tm,to_dt,to_tm):
   if fr_dt =="":
    return "NULL"
   else:
-   return "INVALID2"
+   return "INVALID"
   
 if __name__ == "__main__":
 
