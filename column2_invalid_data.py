@@ -6,7 +6,7 @@ from csv import reader
 from pyspark import SparkContext
 import datetime
 
-# CMPLNT_FR_DT 
+# CMPLNT_FR_TM
 # THIS CODE IS USED TO CHECK DATA QUALITY
 
 # make sure the header will not be included in the data 
@@ -15,25 +15,25 @@ def remove_header(itr_index, itr):
  return iter(list(itr)[1:]) if itr_index == 0 else itr 
  
   
-def val_date(fr_dt,fr_tm,to_dt,to_tm): 
-# first try to make sure the date is a legal date, missing value, or illegal date
+def val_time(fr_dt,fr_tm,to_dt,to_tm): 
+# first try to make sure the time is a legal time
  try:
-  datetime.datetime.strptime(fr_dt,"%m/%d/%Y")
+  datetime.datetime.strptime(fr_tm,'%H:%M:%S')
 # second try to make sure the from_datetime is at least earlier than to_datetime
   try:
-   to_dttm = datetime.datetime.strptime(to_dt+"/"+to_tm,"%m/%d/%Y/%H:%M:%S")
-   fr_dttm = datetime.datetime.strptime(fr_dt+"/"+fr_tm,"%m/%d/%Y/%H:%M:%S") 
+   to_dttm = datetime.datetime.strptime(to_dt+"/"+to_tm,'%m/%d/%Y/%H:%M:%S')
+   fr_dttm = datetime.datetime.strptime(fr_dt+"/"+fr_tm,'%m/%d/%Y/%H:%M:%S') 
    if fr_dttm > to_dttm:
-    return "INVALID" # if from datetime is greater than to.. it is invalid 
-   else: 
+    return "INVALID" # if from datetime is greater than to.. it is invalid
+   else:
     return "VALID"
-  except: # if any 2 - 5 col is missing, the first col is still valid
+  except: # if other columns are missing, I think it is ok 
    return "VALID" 
- except: 
-  if fr_dt =="":
-   return "NULL"
+ except:  
+  if fr_dt =='':
+   return 'NULL'
   else:
-   return "INVALID"
+   return 'INVALID'
   
 if __name__ == "__main__":
 
@@ -42,8 +42,10 @@ if __name__ == "__main__":
  lines = sc.textFile(sys.argv[1], 1)
  line = lines.mapPartitions(lambda x:reader(x))
  line = line.mapPartitionsWithIndex(remove_header) # remove header 
- line = line.map(lambda x: "%s\tDATE\tCompliant from date\t%s" %(x[1],val_date(x[1],x[2],x[3],x[4])))
- line.saveAsTextFile("column1_data_quality.out") 
+ 
+ line = line.map(lambda x: [[x[1],x[2],x[3],x[4]],val_time(x[1],x[2],x[3],x[4])])
+ line = line.filter(lambda x:x[1]== "INVALID")
+ line.saveAsTextFile("column2_invalid_data.out") 
 
  sc.stop()
  

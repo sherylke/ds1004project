@@ -24,7 +24,7 @@ def val_date(fr_dt,fr_tm,to_dt,to_tm):
    to_dttm = datetime.datetime.strptime(to_dt+"/"+to_tm,"%m/%d/%Y/%H:%M:%S")
    fr_dttm = datetime.datetime.strptime(fr_dt+"/"+fr_tm,"%m/%d/%Y/%H:%M:%S") 
    if fr_dttm > to_dttm:
-    return "INVALID" # if from datetime is greater than to.. it is invalid 
+    return "INVALID1" # if from datetime is greater than to.. it is invalid 
    else: 
     return "VALID"
   except: # if any 2 - 5 col is missing, the first col is still valid
@@ -33,7 +33,7 @@ def val_date(fr_dt,fr_tm,to_dt,to_tm):
   if fr_dt =="":
    return "NULL"
   else:
-   return "INVALID"
+   return "INVALID2"
   
 if __name__ == "__main__":
 
@@ -42,8 +42,9 @@ if __name__ == "__main__":
  lines = sc.textFile(sys.argv[1], 1)
  line = lines.mapPartitions(lambda x:reader(x))
  line = line.mapPartitionsWithIndex(remove_header) # remove header 
- line = line.map(lambda x: "%s\tDATE\tCompliant from date\t%s" %(x[1],val_date(x[1],x[2],x[3],x[4])))
- line.saveAsTextFile("column1_data_quality.out") 
+ line = line.map(lambda x: [[x[1],x[2],x[3],x[4]],val_date(x[1],x[2],x[3],x[4])])
+ line = line.filter(lambda x:x[1]!= "VALID")
+ line.saveAsTextFile("column1_invalid_data.out") 
 
  sc.stop()
  

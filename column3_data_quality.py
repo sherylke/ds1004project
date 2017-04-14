@@ -6,7 +6,7 @@ from csv import reader
 from pyspark import SparkContext
 import datetime
 
-# CMPLNT_FR_DT 
+# CMPLNT_TO_DT 
 # THIS CODE IS USED TO CHECK DATA QUALITY
 
 # make sure the header will not be included in the data 
@@ -18,7 +18,7 @@ def remove_header(itr_index, itr):
 def val_date(fr_dt,fr_tm,to_dt,to_tm): 
 # first try to make sure the date is a legal date, missing value, or illegal date
  try:
-  datetime.datetime.strptime(fr_dt,"%m/%d/%Y")
+  datetime.datetime.strptime(to_dt,"%m/%d/%Y")
 # second try to make sure the from_datetime is at least earlier than to_datetime
   try:
    to_dttm = datetime.datetime.strptime(to_dt+"/"+to_tm,"%m/%d/%Y/%H:%M:%S")
@@ -27,10 +27,10 @@ def val_date(fr_dt,fr_tm,to_dt,to_tm):
     return "INVALID" # if from datetime is greater than to.. it is invalid 
    else: 
     return "VALID"
-  except: # if any 2 - 5 col is missing, the first col is still valid
+  except: # if any other col is missing, the to_date col is still valid
    return "VALID" 
  except: 
-  if fr_dt =="":
+  if to_dt =='':
    return "NULL"
   else:
    return "INVALID"
@@ -42,8 +42,8 @@ if __name__ == "__main__":
  lines = sc.textFile(sys.argv[1], 1)
  line = lines.mapPartitions(lambda x:reader(x))
  line = line.mapPartitionsWithIndex(remove_header) # remove header 
- line = line.map(lambda x: "%s\tDATE\tCompliant from date\t%s" %(x[1],val_date(x[1],x[2],x[3],x[4])))
- line.saveAsTextFile("column1_data_quality.out") 
+ line = line.map(lambda x: "%s\tDATE\tCompliant to date\t%s" %(x[3],val_date(x[1],x[2],x[3],x[4])))
+ line.saveAsTextFile("column3_data_quality.out") 
 
  sc.stop()
  

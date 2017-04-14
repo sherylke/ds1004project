@@ -42,8 +42,12 @@ if __name__ == "__main__":
  lines = sc.textFile(sys.argv[1], 1)
  line = lines.mapPartitions(lambda x:reader(x))
  line = line.mapPartitionsWithIndex(remove_header) # remove header 
- line = line.map(lambda x: "%s\tDATE\tCompliant from date\t%s" %(x[1],val_date(x[1],x[2],x[3],x[4])))
- line.saveAsTextFile("column1_data_quality.out") 
+ line = line.map(lambda x: (val_date(x[1],x[2],x[3],x[4]),1))
+ line = line.reduceByKey(lambda x,y: x+y)
+ line =line.map(lambda x: '%s\t%s' %(x[0],x[1]))
+ 
+ 
+ line.saveAsTextFile("column1_data_summary.out") 
 
  sc.stop()
  
