@@ -43,7 +43,7 @@ if __name__ == "__main__":
  line = line.filter(lambda x:x[1]== "VALID") # only look for valid date 
  line = line.map(lambda x: ((datetime.datetime.strptime(x[0],'%m/%d/%Y').year,datetime.datetime.strptime(x[0],'%m/%d/%Y').month),1))
  line = line.reduceByKey(lambda x,y: x+y).sortByKey()
- line = line.map(lambda x: '%s\t%s' %(x[0],x[1]))
+ line = line.map(lambda x: '%s\t%s\t%s' %(x[0][0],x[0][1],x[1]))
  
  line.saveAsTextFile("col5_report_year_month.out") 
 

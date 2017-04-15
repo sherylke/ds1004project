@@ -44,7 +44,7 @@ if __name__ == "__main__":
  line = line.map(lambda x: ((datetime.datetime.strptime(x[0],'%m/%d/%Y').year,datetime.datetime.strptime(x[0],'%m/%d/%Y').isocalendar()[1]\
  ,datetime.datetime.strptime(x[0],'%m/%d/%Y').isocalendar()[2]),1))
  line = line.reduceByKey(lambda x,y: x+y).sortByKey()
- line = line.map(lambda x: '%s\t%s' %(x[0],x[1]))
+ line = line.map(lambda x: '%s\t%s\t%s\t%s' %(x[0][0],x[0][1],x[0][2],x[1]))
  
  line.saveAsTextFile("col5_report_year_week_day.out") 
 
