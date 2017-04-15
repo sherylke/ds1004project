@@ -45,6 +45,7 @@ if __name__ == "__main__":
  
  line = line.map(lambda x: [[x[1],x[2],x[3],x[4]],val_time(x[1],x[2],x[3],x[4])])
  line = line.filter(lambda x:x[1]== "INVALID")
+ line = line.map(lambda x: '%s\t%s' %(x[0],x[1]))
  line.saveAsTextFile("column2_invalid_data.out") 
 
  sc.stop()

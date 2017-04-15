@@ -43,7 +43,8 @@ if __name__ == "__main__":
  line = lines.mapPartitions(lambda x:reader(x))
  line = line.mapPartitionsWithIndex(remove_header) # remove header 
  line = line.map(lambda x: [[x[1],x[2],x[3],x[4]],val_date(x[1],x[2],x[3],x[4])])
- line = line.filter(lambda x:x[1]!= "VALID")
+ line = line.filter(lambda x:x[1]== "INVALID")
+ line = line.map(lambda x: '%s\t%s' %(x[0],x[1]))
  line.saveAsTextFile("column1_invalid_data.out") 
 
  sc.stop()
