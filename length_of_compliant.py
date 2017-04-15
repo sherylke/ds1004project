@@ -6,8 +6,7 @@ from csv import reader
 from pyspark import SparkContext
 import datetime
 
-# CHECK LENGTH OF COMPLIANT (In hours) 
-# ONLY WHEN BOTH FROM AND TO Date time exists 
+# CHECK NUMBER OF COMPLIANTS BY LENGTH OF COMPLIANT
 
 # make sure the header will not be included in the data 
 # source: http://stackoverflow.com/questions/24718697/pyspark-drop-rows

@@ -7,7 +7,6 @@ from pyspark import SparkContext
 import datetime
 
 # REPORT_DATE BY YEAR MONTH
-# THIS CODE IS USED TO CHECK DATA QUALITY
 
 # make sure the header will not be included in the data 
 # source: http://stackoverflow.com/questions/24718697/pyspark-drop-rows

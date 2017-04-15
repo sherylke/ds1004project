@@ -7,7 +7,7 @@ from pyspark import SparkContext
 import datetime
 
 # CMPLNT_TO_DT 
-# THIS CODE IS USED TO CHECK DATA QUALITY
+# THIS CODE IS USED TO PROVIDE INVALID DATA
 
 # make sure the header will not be included in the data 
 # source: http://stackoverflow.com/questions/24718697/pyspark-drop-rows
