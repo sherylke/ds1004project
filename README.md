@@ -28,6 +28,17 @@ hadoop fs -copyFromLocal NYPD_Complaint_Data_Historic.csv
 spark-submit CODE_NAME.py /user/YOUR_NETIT/NYPD_Complaint_Data_Historic.csv  
 hadoop fs -getmerge CODE_NAME.out CODE_NAME.out
 
+**Exception for Column 6-23:**  
+In order to run data summary files(e.g. column7_data_summary.py), please do following:     
+
+FIRST RUN:  
+spark-submit COLUMN_NUMBER_data_quality.py (eg.column7_data_quality.py) /user/YOUR_NETIT/NYPD_Complaint_Data_Historic.csv  
+hadoop fs -getmerge COLUMN_NUMBER_data_quality.out COLUMN_NUMBER_data_quality.out
+
+THEN RUN IN THE FOLDER WHERE YOU SAVED THE OUTPUT IN FIRST STEP:  
+spark-submit COLUMN_NUMBER_data_summary.py (eg.column7_data_summary.py) COLUMN_NUMBER_data_quality.out  
+hadoop fs -getmerge COLUMN_NUMBER_data_summary.out COLUMN_NUMBER_data_summary.out
+
 ## ipython report:
 
 The report uses hadoop results saved on authors' local machines. If you want to reproduce the same analysis, please save your hadoop folder on your local machine and run the ipython notebook in the same folder.   
