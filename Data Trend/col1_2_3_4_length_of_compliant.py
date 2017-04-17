@@ -57,7 +57,7 @@ if __name__ == "__main__":
  line = line.map(lambda x: (datetime_func(x[0][0],x[0][1],x[0][2],x[0][3]),1))
  line = line.reduceByKey(lambda x,y: x+y).sortByKey()
  line = line.map(lambda x: '%s\t%s' %(x[0],x[1])) 
- line.saveAsTextFile("length_of_compliant.out") 
+ line.saveAsTextFile("col1_2_3_4_length_of_compliant.out") 
 
  sc.stop()
 
