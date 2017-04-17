@@ -52,7 +52,7 @@ if __name__ == "__main__":
  line = line.map(lambda x: ((x.year,x.isocalendar()[1],x.isocalendar()[2],x.hour),1))
  line = line.reduceByKey(lambda x,y: x+y).sortByKey()
  line = line.map(lambda x: '%s\t%s\t%s\t%s\t%s' %(x[0][0],x[0][1],x[0][2],x[0][3],x[1])) 
- line.saveAsTextFile("col1and2_hour.out") 
+ line.saveAsTextFile("col1_2_hour.out") 
 
  sc.stop()
 
