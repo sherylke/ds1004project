@@ -14,15 +14,15 @@ https://docs.google.com/a/nyu.edu/document/d/1Ucm_P7rkLDR4e1tl-qNADEEZ95wo1cWLxQ
 **1. Download data:**  
 https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Historic/qgea-i56i
 
-**2. Upload the data to dumbo: **  
+**2. Upload the data to dumbo:**  
 cd "where you saved the data"  
 scp NYPD_Complaint_Data_Historic.csv YOUR_NETID@dumbo.es.its.nyu.edu:/home/YOUR_NETID
 
-**3. Put the data into hadoop: **  
+**3. Put the data into hadoop:**  
 hadoop fs -copyFromLocal NYPD_Complaint_Data_Historic.csv 
 
 ### Run the hadoop code:
-**The code should be run in pyspark on hadoop: **  
+**The code should be run in pyspark on hadoop:**  
 spark-submit CODE_NAME.py /user/YOUR_NETIT/NYPD_Complaint_Data_Historic.csv  
 hadoop fs -getmerge CODE_NAME.out CODE_NAME.out
 
