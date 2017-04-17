@@ -32,8 +32,11 @@ hadoop fs -getmerge CODE_NAME.out CODE_NAME.out
 
 The report uses hadoop results saved on authors' local machines. If you want to reproduce the same analysis, please save your hadoop folder on your local machine and run the ipython notebook in the same folder.   
 
-To do this, you may use:  
-scp YOUR_NETID@dumbo.es.its.nyu.edu:/home/YOUR_NETID/YOUR_FOLDER .
+To do this, you may use to download **one particular output:**  
+scp YOUR_NETID@dumbo.es.its.nyu.edu:/home/YOUR_NETID/YOUR_FOLDER/CODE_NAME.out .  
+
+or download **the whole folder:**  
+scp -r YOUR_NEDID@dumbo.es.its.nyu.edu:/home/YOUR_NEDID/YOUR_FOLDER .
 
 
 ```python
