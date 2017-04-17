@@ -11,7 +11,7 @@ def condition(x):
         else:
             try:
                 i = int(x)
-                if (i>913400) & (i<1067300):
+                if (i>913300) & (i<1067300):
                     p = 'VALID'
                 else:
                     p = 'INVALID'
