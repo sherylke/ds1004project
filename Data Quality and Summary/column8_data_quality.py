@@ -27,7 +27,7 @@ def condition(x):
                 return (x, 'INVALID')
 
 output = pd_cd.map(lambda x:'%s\t%s\t%s\t%s' % (condition(x)[0],'INT', 'internal classification code', condition(x)[1]))
-output.saveAsTextFile("pd_cd.out")
+output.saveAsTextFile("column8_data_quality.out")
 
 sc.stop()
 

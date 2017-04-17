@@ -13,15 +13,15 @@ def remove_header(itr_index, itr):
 
 data = csvfile.mapPartitions(lambda x: reader(x)).mapPartitionsWithIndex(remove_header)
 
-code = data.map(lambda x: x[9])
+pd_cd = data.map(lambda x: x[12])
 
 def condition(x):
         if x == '' or x.lower() == 'nan' or x == ' ':
                 return ('NaN', 'NULL')
         else:
-             	return (x, 'VALID')
+		return (x, 'VALID')
 
-output = code.map(lambda x:'%s\t%s\t%s\t%s' % (condition(x)[0],'TEXT', 'internal classification description', condition(x)[1]))
-output.saveAsTextFile("column9_data_quality.out")
+output = pd_cd.map(lambda x:'%s\t%s\t%s\t%s' % (condition(x)[0],'TEXT', 'jurisdiction description', condition(x)[1]))
+output.saveAsTextFile("column12_data_quality.out")
 
 sc.stop()

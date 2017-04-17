@@ -27,6 +27,6 @@ def condition(x):
 		return (x, 'INVALID')
 
 output = ky_cd.map(lambda x:'%s\t%s\t%s\t%s' % (condition(x)[0],'INT', 'offense classification code', condition(x)[1]))
-output.saveAsTextFile("ky_cd.out")
+output.saveAsTextFile("column6_data_quality.out")
 
 sc.stop()

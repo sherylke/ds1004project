@@ -22,6 +22,6 @@ def condition(x):
              	return (x, 'VALID')
 
 output = code.map(lambda x:'%s\t%s\t%s\t%s' % (condition(x)[0],'TEXT', 'offense description', condition(x)[1]))
-output.saveAsTextFile("ofens_desc.out")
+output.saveAsTextFile("column7_data_quality.out")
 
 sc.stop()
