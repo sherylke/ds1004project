@@ -1,0 +1,5 @@
+ref: Data-Driven Approaches to Crime and Traffic Safety, DDACTS, Data-Driven Approaches to Crime and Traffic Safety Operational Guidelines, National Highway Traffic Safety Administration, August 2009.
+
+Data:
+NYC map by zip code (geoJson): http://nycdata.pediacities.com/dataset/nyc-zip-code-tabulation-areas
+unemployment rate: https://www.labor.ny.gov/stats/laus.asp
