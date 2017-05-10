@@ -1,3 +1,6 @@
+# spark-submit col5_summary_time.py /user/YOUR_NETID/NYPD_Complaint_Data_Historic.csv
+# hadoop fs -getmerge col5_summary_time.out col5_summary_time.out 
+
 from __future__ import print_function
 
 import sys

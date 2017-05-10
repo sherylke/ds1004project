@@ -1,3 +1,7 @@
+# spark-submit col19_23_latlong_key.py /user/YOUR_NETID/NYPD_Complaint_Data_Historic.csv
+# hadoop fs -getmerge col19_23_latlong_key.out col19_23_latlong_key.out
+
+
 from __future__ import print_function
 
 import sys

@@ -1,3 +1,7 @@
+# spark-submit NYPD_Motor_Vehicle_Collisions.py /user/YOUR_NETID/NYPD_Motor_Vehicle_Collisions.csv 
+
+# hadoop fs -getmerge NYPD_Motor_Vehicle_Collisions.out NYPD_Motor_Vehicle_Collisions.out 
+
 from __future__ import print_function
 
 import sys
