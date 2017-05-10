@@ -22,7 +22,7 @@ scp NYPD_Complaint_Data_Historic.csv YOUR_NETID@dumbo.es.its.nyu.edu:/home/YOUR_
 **3. Put the data into hadoop:**  
 hadoop fs -copyFromLocal NYPD_Complaint_Data_Historic.csv 
 
-## Run the hadoop code:
+## Run the code:
 (If there is instructions in front of the codes, then please run the codes accordingly. Otherwise please follow this instruction below.)
 
 **The code should be run in pyspark on hadoop:**  
