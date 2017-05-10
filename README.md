@@ -24,6 +24,7 @@ hadoop fs -copyFromLocal NYPD_Complaint_Data_Historic.csv
 
 ## Run the hadoop code:
 (If there is instructions in front of the codes, then please run the codes accordingly. Otherwise please follow this instruction below.)
+
 **The code should be run in pyspark on hadoop:**  
 spark-submit CODE_NAME.py /user/YOUR_NETIT/NYPD_Complaint_Data_Historic.csv  
 hadoop fs -getmerge CODE_NAME.out CODE_NAME.out
@@ -51,6 +52,7 @@ scp -r YOUR_NEDID@dumbo.es.its.nyu.edu:/home/YOUR_NEDID/YOUR_FOLDER .
 
 ## Hypotheses analysis:
 (reference and data source is in /part 2/reference and data source.txt)
+
 /part 2/location/geojson.ipynb gives the codes to generate corresponding zipcodes for our original data and merge back to our data. /part 2/location/Map.ipynb plots the map for crime, collision and price data based on zipcodes.
 
 /part 2/location/Crime Collision zipcode/combine.ipynb combine the crime frequency and collision frequency data on zipcode and plot the relationship between crime frequency and collision frequency. The zipcode for each unique (Latitude, Longitude) pair is summarized in combine.csv.
