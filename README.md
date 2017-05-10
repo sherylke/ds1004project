@@ -49,6 +49,17 @@ scp YOUR_NETID@dumbo.es.its.nyu.edu:/home/YOUR_NETID/YOUR_FOLDER/CODE_NAME.out .
 or download **the whole folder:**  
 scp -r YOUR_NEDID@dumbo.es.its.nyu.edu:/home/YOUR_NEDID/YOUR_FOLDER .
 
+## Hypotheses analysis:
+(reference and data source is in /part 2/reference and data source.txt)
+/part 2/location/geojson.ipynb gives the codes to generate corresponding zipcodes for our original data and merge back to our data. /part 2/location/Map.ipynb plots the map for crime, collision and price data based on zipcodes.
+
+/part 2/location/Crime Collision zipcode/combine.ipynb combine the crime frequency and collision frequency data on zipcode and plot the relationship between crime frequency and collision frequency. The zipcode for each unique (Latitude, Longitude) pair is summarized in combine.csv.
+
+/part 2/location/Crime price zipcode/zipcode and price.csv gives the crime frequency and average price joined by zipcode.
+
+We use /part 2/time/Cirme Collision time/NYPD_Motor_Vehicle_Collisions.py to generate weekly grouped collision data, and /part 2/time/col5_compared_to_zipcode.py to generate monthly groupd crime data. /part 2/time/Cirme Collision time/Collision vs crime.ipynb gives the comparison between crime data and collision data trends through time.
+
+/part 2/time/Crime unemployment time/compare to unempolyment.ipynb gives the comparison between unemployment data and crime data trends through time.
 
 ```python
 
