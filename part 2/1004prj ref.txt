@@ -3,3 +3,4 @@ ref: Data-Driven Approaches to Crime and Traffic Safety, DDACTS, Data-Driven App
 Data:
 NYC map by zip code (geoJson): http://nycdata.pediacities.com/dataset/nyc-zip-code-tabulation-areas
 unemployment rate: https://www.labor.ny.gov/stats/laus.asp
+Housing prices: http://files.zillowstatic.com/research/public/Zip/Zip_Zhvi_AllHomes.csv
